@@ -6,19 +6,19 @@ local cost_factor =  2
 local time_factor =  0.5
 
 for _,recipe in pairs(recipes) do
-  -- local ingredients = recipe.normal and recipe.normal.ingredients or recipe.ingredients
-  -- for _,ingredient in ipairs(ingredients) do
-  --   if( ingredient.amount ~= nil )
-  --   then
-  --     ingredient.amount = math.max(math.floor(ingredient.amount * cost_factor), 1)
-  --   else
-  --     ingredient[2] = math.max(math.floor(ingredient[2] * cost_factor), 1)
-  --   end
-  -- end
+  local ingredients = recipe.normal and recipe.normal.ingredients or recipe.ingredients
+  for _,ingredient in ipairs(ingredients) do
+    if( ingredient.amount ~= nil )
+    then
+      ingredient.amount = math.max(math.floor(ingredient.amount * cost_factor), 1)
+    else
+      ingredient[2] = math.max(math.floor(ingredient[2] * cost_factor), 1)
+    end
+  end
 
-  if( recipe.normal and recipe.normal.energy ~= nil )
+  if( recipe.normal )
   then
-    recipe.normal.energy = 10
+    recipe.normal.energy_required = 10
   end
 end
 
